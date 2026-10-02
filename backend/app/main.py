@@ -31,3 +31,11 @@ async def startup_event():
 @app.get("/")
 async def root():
     return {"message": "Stock Price Prediction API", "status": "running", "model_loaded": service.model is not None}
+
+
+@app.get("/health")
+async def health():
+    return {
+        "status": "healthy",
+        "model_loaded": service.model is not None,
+    }
